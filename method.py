@@ -16,7 +16,7 @@ def evolve_ψ(R, ψt, δt):
 @nb.jit(nopython=True)
 def evolve_R(R, P, ψ, δt):
     F1       = model.F_nν(R, ψ)
-    R_δt     = R + (P * δt) #+ (0.5 * F1 * δt ** 2)
+    R_δt     = R + (P * δt) + (0.5 * F1 * δt ** 2)
     
     F2       = model.F_nν(R_δt, ψ) 
     P_δt     = P + 0.5 * (F1 + F2) * δt
